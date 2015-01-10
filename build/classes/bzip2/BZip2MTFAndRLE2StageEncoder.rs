@@ -1,0 +1,1 @@
+org.itadaki.bzip2.BZip2MTFAndRLE2StageEncoder
