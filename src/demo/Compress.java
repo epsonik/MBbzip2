@@ -1,4 +1,3 @@
-
 package demo;
 
 import java.io.BufferedInputStream;
@@ -12,39 +11,42 @@ import java.io.OutputStream;
 
 import bzip2.*;
 
-
 public class Compress {
 
-	public static void main (String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
-		if (args.length == 0) {
-			System.err.println ("BZip2 compressor\n\nUsage:\n  java demo.Compress <filename>\n");
-			System.exit (1);
-		}
+        /*if (args.length == 0) {
+         System.err.println ("BZip2 compressor\n\nUsage:\n  java demo.Compress <filename>\n");
+         System.exit (1);
+         }
 
-		File inputFile = new File (args[0]);
-		if (!inputFile.exists() || !inputFile.canRead()) {
-			System.err.println ("Cannot read file " + inputFile.getPath());
-			System.exit (1);
-		}
+         File inputFile = new File (args[0]);
+         if (!inputFile.exists() || !inputFile.canRead()) {
+         System.err.println ("Cannot read file " + inputFile.getPath());
+         System.exit (1);
+         }
 
-		File outputFile = new File (args[0] + ".bz2");
-		if (outputFile.exists()) {
-			System.err.println ("File " + outputFile.getPath() + " already exists");
-			System.exit (1);
-		}
+         File outputFile = new File (args[0] + ".bz2");
+         if (outputFile.exists()) {
+         System.err.println ("File " + outputFile.getPath() + " already exists");
+         System.exit (1);
+         }
+         */
+        String fileName = "nowy.txt";
+        String outputFile = "Compressed.txt";
+        File inputFile = new File(fileName);
 
-		InputStream fileInputStream = new BufferedInputStream (new FileInputStream (inputFile));
-		OutputStream fileOutputStream = new BufferedOutputStream (new FileOutputStream (outputFile), 524288);
-		BZip2OutputStream outputStream = new BZip2OutputStream (fileOutputStream);
+        InputStream fileInputStream = new BufferedInputStream(new FileInputStream(inputFile));
+        OutputStream fileOutputStream = new BufferedOutputStream(new FileOutputStream(outputFile), 524288);
+        BZip2OutputStream outputStream = new BZip2OutputStream(fileOutputStream);
 
-		byte[] buffer = new byte [524288];
-		int bytesRead;
-		while ((bytesRead = fileInputStream.read (buffer)) != -1) {
-			outputStream.write (buffer, 0, bytesRead);
-		}
-		outputStream.close();
+        byte[] buffer = new byte[524288];
+        int bytesRead;
+        while ((bytesRead = fileInputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
+        outputStream.close();
 
-	}
+    }
 
 }
